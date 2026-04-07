@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . "/koneksi.php";
+include __DIR__ . "/config.php";
 
 $id = $_GET['id'];
 

@@ -1,6 +1,6 @@
 <?php
 include "layout/header.php";
-include "koneksi.php";
+include "config.php";
 
 $data = $conn->query("SELECT * FROM pelanggan");
 ?>

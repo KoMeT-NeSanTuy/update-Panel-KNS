@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "/koneksi.php";
+require __DIR__ . "/config.php";
 include "layout/header.php";
 
 // data

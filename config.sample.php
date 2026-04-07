@@ -1,3 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "DB_USER", "DB_PASS", "DB_NAME");
-?>
+$DB_HOST = "localhost";
+$DB_USER = "username";
+$DB_PASS = "password";
+$DB_NAME = "kns_panel";

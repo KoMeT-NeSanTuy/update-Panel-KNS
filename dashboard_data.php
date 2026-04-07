@@ -1,5 +1,5 @@
 <?php
-require "koneksi.php";
+require "config.php";
 
 $total = $conn->query("SELECT COUNT(*) as t FROM pelanggan")->fetch_assoc()['t'];
 $online = $conn->query("SELECT COUNT(*) as t FROM pelanggan WHERE status='online'")->fetch_assoc()['t'];
