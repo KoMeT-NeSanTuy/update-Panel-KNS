@@ -1,108 +1,87 @@
-# 🚀 KNS Panel (Auto Install)
+🚀 NEXT STEP — TEST INSTALL DI UBUNTU LAIN
 
-Panel sederhana untuk management router MikroTik + remote access (L2TP & Winbox style seperti fazznet).
+Sekarang kita pastikan:
+👉 project kamu benar-benar bisa diinstall dari nol
 
----
+🐧 STEP 1 — SIAPKAN SERVER BARU
 
-## ✨ Fitur
+Di Ubuntu baru:
 
-* Multi user login
-* Management router
-* Siap integrasi L2TP
-* Auto install (1 command)
-* Berbasis PHP + MySQL
+sudo apt update
+sudo apt install apache2 php mysql-server php-mysql git -y
+📥 STEP 2 — CLONE PROJECT
 
----
+Masuk web root:
 
-## ⚡ Instalasi Cepat (1 Command)
+cd /var/www/html
 
-### 1. Install Git
+Clone dari GitHub kamu:
 
-```bash
-apt update
-apt install git -y
-```
+sudo git clone https://github.com/KoMeT-NeSanTuy/update-Panel-KNS.git
+🔐 STEP 3 — SET PERMISSION
+sudo chown -R www-data:www-data update-Panel-KNS
+sudo chmod -R 755 update-Panel-KNS
+🌐 STEP 4 — JALANKAN INSTALLER
 
-### 2. Clone Repository
+Buka browser:
 
-```bash
-git clone https://github.com/KoMeT-NeSanTuy/kns-panel.git
-cd kns-panel
-```
+http://IP-SERVER/update-Panel-KNS/install.php
+⚙️ STEP 5 — ISI FORM
 
-### 3. Jalankan Installer
+Isi:
 
-```bash
-bash install.sh
-```
+Host: localhost
+User: root
+Password: (kosong / sesuai server)
+Database: kns_panel
 
----
+Klik Install
 
-## 🌐 Akses Panel
+✅ STEP 6 — SELESAI
 
-Buka di browser:
+Kalau berhasil:
 
-```
-http://IP_SERVER/panel
-```
+👉 otomatis:
 
----
+database dibuat
+tabel masuk
+config.php dibuat
+🔥 STEP 7 (WAJIB AMAN)
 
-## 🔐 Login Default
+Masuk server:
 
-```
-Username: admin
-Password: admin123
-```
+cd /var/www/html/update-Panel-KNS
+rm install.php
 
----
+👉 supaya tidak disalahgunakan
 
-## ⚙️ Yang Akan Terinstall Otomatis
+🎯 STEP 8 — TEST APP
 
-* Apache2
-* PHP + MySQL
-* MariaDB
-* Database `kns_panel`
-* Web panel di `/var/www/html/panel`
+Buka:
 
----
+http://IP-SERVER/update-Panel-KNS/map.php
+🧪 KALAU ERROR (CEK INI)
+❌ Blank / putih
+sudo nano /etc/php/*/apache2/php.ini
 
-## 📁 Struktur Project
+ubah:
 
-```
-panel/
-├── config.php
-├── login.php
-├── index.php
-├── routers.php
-├── add-router.php
-├── database.sql
-├── install.sh
-```
+display_errors = On
 
----
+restart:
 
-## ⚠️ Catatan
+sudo systemctl restart apache2
+❌ MySQL error
+sudo mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+FLUSH PRIVILEGES;
+🚀 NEXT LEVEL (KAMU SUDAH MASUK PRO 🔥)
 
-* Pastikan VPS fresh (Ubuntu)
-* Jalankan sebagai root
-* Port 80 harus terbuka
+Kalau ini sudah jalan, kita bisa upgrade:
 
----
-
-## 🚀 Roadmap
-
-* [ ] Auto generate port
-* [ ] L2TP integration
-* [ ] Remote Winbox system
-* [ ] Cloudflare subdomain automation
-
----
-
-## 👨‍💻 Author
-
-KNS Project - Nesantuy
-
----
-
-🔥 Simple, cepat, dan siap dikembangkan jadi layanan seperti fazznet
+🔥 Level Production:
+🔐 Login admin (biar aman)
+🌍 Domain + HTTPS
+🐳 Docker (1 command install)
+🔄 Auto update dari GitHub
+📡 Monitoring MikroTik realtime
